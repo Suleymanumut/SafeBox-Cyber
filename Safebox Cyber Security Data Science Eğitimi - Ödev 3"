@@ -1,0 +1,14 @@
+SELECT
+    DATE_TRUNC('month', order_date) AS month,
+    COUNT(DISTINCT customer_id) AS unique_customers,
+    SUM(order_total) AS total_revenue,
+    AVG(order_total) AS average_order_total
+FROM
+    orders
+WHERE
+    order_date >= '2022-01-01'
+    AND order_date < '2023-01-01'
+GROUP BY
+    DATE_TRUNC('month', order_date)
+ORDER BY
+    month;
